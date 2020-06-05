@@ -1,0 +1,5 @@
+## Parameters file ##
+WebFrontEnd_cpu: 1
+WebFrontEnd_ingressport: 80
+ToDoService_cpu: 1
+ToDoService_ingressport: 81

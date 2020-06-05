@@ -1,0 +1,28 @@
+﻿## Service definition ##
+application:
+  schemaVersion: 1.0.0-preview2
+  name: AspNetMesh
+  properties:
+    services:
+      - name: ToDoService
+        properties:
+          description: ToDoService description.
+          osType: Windows
+          codePackages:
+            - name: ToDoService
+              image: todoservice:dev
+              endpoints:
+                - name: ToDoServiceListener
+                  port: 80
+              environmentVariables:
+                - name: ApplicationInsights:InstrumentationKey
+                  value: "47317915-7dab-44ee-8055-c57a462f571b"
+              resources:
+                requests:
+                  cpu: "[parameters('ToDoService_cpu')]"
+                  memoryInGB: 1
+          replicaCount: 1
+          networkRefs:
+            - name: AspNetMeshNetwork
+              endpointRefs:
+                - name: ToDoServiceListener

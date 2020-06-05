@@ -1,0 +1,22 @@
+gateway:
+  schemaVersion: 1.0.0-preview2
+  name: AspNetMeshGateway
+  properties:
+    description: AspNetMesh Gateway Resource
+    sourceNetwork:
+      name: Open
+    destinationNetwork:
+      name: AspNetMeshNetwork
+    tcp:
+      - name: ToDoServiceTCP
+        port: "[parameters('ToDoService_ingressport')]"
+        destination:
+          applicationName: AspNetMesh
+          serviceName: ToDoService
+          endpointName: ToDoServiceListener
+      - name: WebFrontEndTCP
+        port: "[parameters('WebFrontEnd_ingressport')]"
+        destination:
+          applicationName: AspNetMesh
+          serviceName: WebFrontEnd
+          endpointName: WebFrontEndListener
